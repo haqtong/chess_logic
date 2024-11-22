@@ -77,7 +77,7 @@ class Config(object):
             task_data = self.load_data_pkl(file_path)
             return task_data
         elif file_path.endswith("json"):
-            fopen_json = open(file_path, 'r')
+            fopen_json = open(file_path, 'r',encoding='utf_8')
             json_data = json.load(fopen_json)
             return json_data
 
