@@ -15,20 +15,15 @@ chess_val
 import json
 import os
 from config.set_config import *
-fn = 'chess_message_2.txt'
-fn_1 = 'chess_val.json'
-infn = os.path.join(Config_base.ref,fn)
+fn = 'trait_chess_group.json'
+fn_1 = 'trait_chess_group_size.json'
+infn = os.path.join(Config_base.data_warehouse,fn)
 outfn = os.path.join(Config_base.data_warehouse,fn_1)
+trait_group = Config_base.read_data(infn)
+print(trait_group)
 aim_dict = {}
 
-with open(infn,'r',encoding='utf_8') as f:
-    for line in f:
-        mes = line.strip().split("：")
-        chess_val = mes[0]
-        aim_dict[chess_val] = []
-        aim_dict[chess_val] = mes[1].split('、')
-print(aim_dict)
+for trait,chess_group in trait_group.items():
+    aim_dict[trait] = []
 
 Config_base.dumps_data(aim_dict,outfn)
-# with open(outfn, "w+", encoding='utf-8') as f:
-#     f.write(json.dumps(aim_dict, ensure_ascii=False))

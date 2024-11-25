@@ -15,7 +15,7 @@ chess_val
 import json
 import os
 from config.set_config import *
-fn = 'chess_trait.json'
+fn = 'trait_chess_group.json'
 fn_1 = 'trait_chess_group.json'
 infn = os.path.join(Config_base.data_warehouse,fn)
 outfn = os.path.join(Config_base.data_warehouse,fn_1)
