@@ -58,7 +58,7 @@ for ind,group in enumerate(all_combinations):
 indexed_list = list(enumerate(group_size))
 # 对新列表进行排序，排序依据是元素值
 sorted_indexed_list = sorted(indexed_list, key=lambda x: -x[1])
-for index in sorted_indexed_list[:10]:
+for index in sorted_indexed_list[:50]:
     print(all_combinations[index[0]])
     print(trait_group[index[0]])
 
