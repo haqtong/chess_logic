@@ -13,7 +13,7 @@ LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 logging.basicConfig(filename='short_term.log', level=logging.INFO, format=LOG_FORMAT)
 
 
-class pdd():
+class chess():
     def __init__(self):
         self.chess_trait_fn = 'chess_trait.json'
         self.chess_val_fn = 'chess_val.json'
@@ -64,5 +64,51 @@ class pdd():
             print(trait_group[index[0]])
 
         return 0
-    def unique(self):
-        pass
+    def ylzdyw_creator(self,file_path = os.path.join(Config_base.data_warehouse,'ylzdyw.json') ):
+        '''
+        意料中的意外表单构建
+        :return:
+        '''
+        aim_dict = {}
+        dice = [x for x in range(1, 7)]
+        all_sample = itertools.product(dice, dice, dice)
+        new_sample_tmp_0 = [sorted(list(x)) for x in all_sample]
+        new_sample_tmp_1 = []
+        for group in new_sample_tmp_0:
+            dice_group ='-'.join([str(x) for x in group])
+            new_sample_tmp_1.append(dice_group)
+
+        new_sample_tmp = list(set(new_sample_tmp_1))
+        for group in new_sample_tmp:
+            aim_dict[group] = []
+        Config_base.dumps_data(aim_dict, file_path)
+    def ylzdyw(self):
+        '''
+        意料之中的意外
+        :return:
+        '''
+        file_path = os.path.join(Config_base.data_warehouse,'ylzdyw.json')
+        if os.path.exists(file_path):
+            print(f"文件 '{file_path}' 存在.")
+            aim_dict = Config_base.read_data(file_path)
+        else:
+            self.ylzdyw_creator(file_path)
+
+        print('请输入要补充的投掷')
+        _ = input()
+        print('请输入获得的效果')
+        _1 = input()
+        aim_dict[_].append(_1)
+        Config_base.dumps_data(aim_dict,file_path)
+
+
+
+
+        # print(aim_dict)
+
+
+
+if __name__ == '__main__':
+    chess_class = chess()
+    chess_class.ylzdyw_creator()
+
